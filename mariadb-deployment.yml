@@ -24,4 +24,11 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: mysql1234
+      - name: adminer
+        image: adminer
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: viewer
+
 
