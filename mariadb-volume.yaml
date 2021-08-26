@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+  labels:
+    app: mariadb
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: "1Gi"
+  cinder: 
+    fsType: "ext4" 
+    volumeID: "16afae9b-a92c-487b-b94b-0d1311047520" 
