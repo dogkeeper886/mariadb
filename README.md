@@ -1,2 +1,8 @@
-# mariadb
-Create a db with mariadb, instead of using mysql. Apply yaml files to bring up mariadb with a persistent volume, to store, to share data in pod, avoid data missing when pod delete, recreate. Contain db, a db viewer, volume.
+# MariaDB
+Apply yaml files to bring up mariadb with a persistent volume.
+#### OpenStack Cinder volume
+PVC file in cinder folder
+#### Raw volume
+PVC file in raw folder
+#### Root passeord
+Replace password in secret file and apply yaml file to create secret
