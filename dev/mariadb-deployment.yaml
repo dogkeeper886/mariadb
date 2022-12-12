@@ -34,7 +34,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mariadb
-              key: password
+              key: MARIADB_ROOT_PASSWORD
       - name: adminer
         resources:
           limits:
