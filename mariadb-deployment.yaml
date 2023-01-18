@@ -50,7 +50,6 @@ spec:
       - name: mariadb-pv
         persistentVolumeClaim:
           claimName: mariadb-pvc
-        volumeMounts:
       securityContext:
         fsGroup: 1000
              
