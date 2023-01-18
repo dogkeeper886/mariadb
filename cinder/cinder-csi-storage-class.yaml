@@ -3,3 +3,5 @@ kind: StorageClass
 metadata:
   name: csi-sc-cinderplugin
 provisioner: cinder.csi.openstack.org
+parameters:
+  availability: data
