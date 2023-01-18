@@ -16,7 +16,17 @@ spec:
     spec:
       containers:
       - name: mariadb
-        image: mariadb
+        resources:
+          limits:
+            cpu: 250m
+            ephemeral-storage: 1Gi
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            ephemeral-storage: 1Gi
+            memory: 512Mi      
+        image: mariadb:10.9.4
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306
           protocol: TCP
@@ -25,20 +35,22 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mariadb-secret
-              key: password
+              name: mariadb
+              key: MARIADB_ROOT_PASSWORD
         volumeMounts:
+        - name: config
+          mountPath: /docker-entrypoint-initdb.d/YOUR_SQL_SCRIPT.sql
+          subPath: freeradius-server.sql
         - mountPath: /var/lib/mysql
-          name: mariadb-pv
-      - name: adminer
-        image: adminer
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-          name: viewer
-      securityContext:
-        fsGroup: 1000
+          name: mariadb-pv                              
       volumes:
+      - name: config
+        configMap:
+          name: mariadb
       - name: mariadb-pv
         persistentVolumeClaim:
           claimName: mariadb-pvc
+        volumeMounts:
+      securityContext:
+        fsGroup: 1000
+             

@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: mariadb
-  name: mariadb
+    app: adminer
+  name: adminer
   namespace: default
 spec:
   ports:
-  - port: 3306
+  - port: 8080
     protocol: TCP
-    name: mysql         
+    name: viewer         
   selector:
-    app: mariadb
+    app: adminer
   type: NodePort

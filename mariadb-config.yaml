@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb
+  namespace: default
+data:
+  YOUR_SQL_SCRIPT.sql: |
+    CREATE Database MY_DB;
+    USE MY_DB;
